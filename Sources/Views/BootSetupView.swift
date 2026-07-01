@@ -6,7 +6,7 @@ import SwiftUI
 struct BootSetupView: View {
     @EnvironmentObject private var state: AppState
 
-    private var supported: Bool { ChipSupport.bootchainSupported }
+    private var tier: ChipSupport.SupportTier { ChipSupport.tier }
 
     var body: some View {
         ScrollView {
@@ -19,8 +19,10 @@ struct BootSetupView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                if !supported {
-                    unsupportedBanner
+                switch tier {
+                case .supported:    EmptyView()
+                case .experimental: experimentalBanner
+                case .unsupported:  unsupportedBanner
                 }
 
                 stepBox(number: 1,
@@ -113,9 +115,20 @@ struct BootSetupView: View {
 
     // MARK: - Pieces
 
+    private var experimentalBanner: some View {
+        GroupBox {
+            Label("Experimental on \(ChipSupport.brandString). You can complete these steps and attempt the boot, but the m1n1 bring-up for this chip has never booted on hardware, expect it to hang at the m1n1 stage. It's safe to try (external SSD only). See experimental/t8132-bringup.",
+                  systemImage: "flask.fill")
+                .foregroundStyle(.orange)
+                .font(.callout)
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(6)
+        }
+    }
+
     private var unsupportedBanner: some View {
         GroupBox {
-            Label("On this \(ChipSupport.brandString), the m1n1 bootchain does not run yet — you can complete these steps, but Windows will not boot through (see experimental/t8132-bringup).",
+            Label("There are no m1n1 bring-up assets for \(ChipSupport.brandString) in this repo yet. You can register the boot object, but it will hang at the m1n1 stage until a device tree for this chip exists (see experimental/t8132-bringup for the M4 template).",
                   systemImage: "exclamationmark.triangle.fill")
                 .foregroundStyle(.orange)
                 .font(.callout)

@@ -18,12 +18,18 @@ fi
 cd m1n1
 git pull --recurse-submodules || true
 
-# EXPERIMENTAL_T8132=1 wires the Apple M4 (Donan) core-init dispatch and adds
-# the chicken-bit scaffold (empty/safe by default, populated by the trace
-# tooling in experimental/t8132-bringup/chickens-trace/). See that README.
-if [ "${EXPERIMENTAL_T8132:-0}" = "1" ] && [ ! -f src/chickens_donan.c ]; then
+# The Apple M4 (Donan) core-init scaffold. Auto-enabled when building on an M4
+# Mac (or force with EXPERIMENTAL_T8132=1). Stock upstream m1n1 leaves Donan
+# per-core init NULL, so without this an M4 hangs immediately; the scaffold
+# wires the dispatch to real init functions with empty/safe chicken regions
+# (populated by the trace tooling in experimental/t8132-bringup/). See that
+# README. This is unverified on hardware.
+HOST_BRAND="$(sysctl -n machdep.cpu.brand_string 2>/dev/null || true)"
+case "${HOST_BRAND}" in *M4*) IS_M4_HOST=1 ;; *) IS_M4_HOST=0 ;; esac
+if { [ "${EXPERIMENTAL_T8132:-0}" = "1" ] || [ "${IS_M4_HOST}" = "1" ]; } \
+   && [ ! -f src/chickens_donan.c ]; then
     git apply "${ROOT}/experimental/t8132-bringup/patches/m1n1-t8132-donan-chickens-scaffold.patch"
-    echo "==> Applied experimental m1n1 t8132 Donan chicken scaffold."
+    echo "==> Applied experimental m1n1 t8132 Donan chicken scaffold (M4)."
 fi
 
 export PATH="/opt/homebrew/opt/llvm/bin:${PATH}"

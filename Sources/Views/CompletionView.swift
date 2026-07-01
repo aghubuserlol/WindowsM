@@ -1,12 +1,12 @@
 import SwiftUI
 
-/// Step 5, success state. The post-install guidance is chip-aware: M1/M2 can
-/// actually boot the chain (with the manual recoveryOS steps); M3/M4 cannot
-/// yet, so we say so honestly instead of implying a reboot will work.
+/// Step 5, success state. Guidance is chip-aware: M1/M2 boot the chain with
+/// the manual recoveryOS steps; M4 can be attempted (experimental, unverified);
+/// M3 and unknown chips have no bring-up assets, so say so.
 struct CompletionView: View {
     @EnvironmentObject private var state: AppState
 
-    private var supported: Bool { ChipSupport.bootchainSupported }
+    private var tier: ChipSupport.SupportTier { ChipSupport.tier }
     private var chip: String { ChipSupport.brandString }
 
     var body: some View {
@@ -26,10 +26,10 @@ struct CompletionView: View {
                 }
             }
 
-            if supported {
-                supportedGuidance
-            } else {
-                unsupportedGuidance
+            switch tier {
+            case .supported:    supportedGuidance
+            case .experimental: experimentalGuidance
+            case .unsupported:  unsupportedGuidance
             }
 
             HStack {
@@ -70,7 +70,42 @@ struct CompletionView: View {
         }
     }
 
-    // MARK: - M3 / M4 (not bootable yet, be honest)
+    // MARK: - M4 (attemptable, unverified)
+
+    @ViewBuilder
+    private var experimentalGuidance: some View {
+        GroupBox {
+            VStack(alignment: .leading, spacing: 10) {
+                Label("Experimental on this \(chip)", systemImage: "flask.fill")
+                    .font(.headline)
+                    .foregroundStyle(.orange)
+                Text("The disk is built correctly and you can attempt the boot, but the m1n1 bring-up for this chip has never booted on real hardware. Expect it to hang at the m1n1 stage. Trying is safe: the boot object is on the external SSD and is only entered when you pick it from the startup picker, your internal macOS is untouched.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("To actually get it booting you'll need a UART/USB debug cable and a second Mac to run the m1n1 proxy. See experimental/t8132-bringup.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(8)
+        }
+
+        GroupBox("Manual step, Startup Security for the stub (recoveryOS)") {
+            instructionList(BootchainManager.startupSecurityInstructions)
+        }
+
+        GroupBox("Switching between Windows and macOS") {
+            VStack(alignment: .leading, spacing: 6) {
+                Label("Try Windows: hold the power button, pick “WinM Stub”.", systemImage: "power")
+                Label("Return to macOS: hold the power button, pick Macintosh HD.", systemImage: "apple.logo")
+            }
+            .font(.callout)
+            .padding(8)
+        }
+    }
+
+    // MARK: - M3 / unknown (no bring-up assets, be honest)
 
     @ViewBuilder
     private var unsupportedGuidance: some View {
@@ -79,11 +114,7 @@ struct CompletionView: View {
                 Label("This \(chip) can’t boot the install yet", systemImage: "exclamationmark.triangle.fill")
                     .font(.headline)
                     .foregroundStyle(.orange)
-                Text("The disk is built correctly — Windows, the EFI boot files, and the m1n1 + UEFI payload are all in place, and the Boot Setup stub steps will register cleanly. But the m1n1 bootloader does not support M3/M4 silicon yet, so picking “WinM Stub” at startup will hang at the m1n1 stage rather than reach Windows.")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text("This isn’t something the install did wrong — it’s the edge of what’s possible on this chip today (see experimental/t8132-bringup).")
+                Text("The disk is built correctly and the Boot Setup stub steps will register cleanly. But there are no m1n1 bring-up assets for this chip in this repo, so picking “WinM Stub” at startup will hang at the m1n1 stage. Making it boot means building a device tree from this machine's hardware first (the M4 work in experimental/t8132-bringup is the template).")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -93,10 +124,9 @@ struct CompletionView: View {
 
         GroupBox("What you can do") {
             VStack(alignment: .leading, spacing: 8) {
-                bullet("Keep the disk as-is — it’s ready for the day M3/M4 bootchain support lands upstream.")
-                bullet("To run Windows on this Mac today, use a VM (UTM is free; Parallels or VMware Fusion also run Windows 11 ARM64 well).")
-                bullet("Have an M1 or M2 Mac? The bootchain genuinely works there — run the installer on that machine.")
-                bullet("Please don’t lower Startup Security expecting a Windows boot here — on M3/M4 it won’t boot through, so it’s effort without payoff.")
+                bullet("Keep the disk as-is, it's ready once bring-up for this chip exists.")
+                bullet("To run Windows on this Mac today, use a VM (UTM is free; Parallels and VMware Fusion also run Windows 11 ARM64).")
+                bullet("Have an M1 or M2 Mac? The bootchain genuinely works there, run the installer on that machine.")
             }
             .padding(8)
         }

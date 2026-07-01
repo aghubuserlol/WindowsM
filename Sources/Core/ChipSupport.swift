@@ -37,13 +37,32 @@ enum ChipSupport {
         return .unknown
     }
 
-    /// True when the m1n1 + U-Boot chain can boot this machine.
-    static var bootchainSupported: Bool {
+    enum SupportTier {
+        /// Chain is known to boot (verified on real hardware).
+        case supported
+        /// Bring-up assets exist and the attempt is safe, but no boot has been
+        /// confirmed on this SoC yet. The user can try and help prove it.
+        case experimental
+        /// No bring-up work exists for this SoC in this repo.
+        case unsupported
+    }
+
+    static var tier: SupportTier {
         switch generation {
-        case .m1, .m2: return true
-        case .m3, .m4, .unknown: return false
+        case .m1, .m2:    return .supported
+        case .m4:         return .experimental   // scaffold in experimental/t8132-bringup
+        case .m3:         return .unsupported     // no t8122 assets in this repo yet
+        case .unknown:    return .unsupported
         }
     }
+
+    /// True when the chain is known-good. Kept for call sites that only care
+    /// about the verified case.
+    static var bootchainSupported: Bool { tier == .supported }
+
+    /// True when the user can attempt the boot (supported or experimental).
+    /// Gates whether the flow offers to proceed at all.
+    static var bootchainAttemptable: Bool { tier != .unsupported }
 
     static var isAppleSilicon: Bool {
         var value: Int32 = 0
