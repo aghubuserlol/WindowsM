@@ -1,0 +1,109 @@
+# XcodeGen project definition for WindowsM.
+# Regenerate the .xcodeproj with:  xcodegen generate
+name: WindowsM
+options:
+  bundleIdPrefix: com.windowsm
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    # Ad-hoc signing so the project builds out of the box.
+    # For SMJobBless to actually install the helper at runtime you need a real
+    # Developer ID / Apple Development identity — see README.md "Code signing".
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+  configs:
+    Debug:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+
+targets:
+  WindowsM:
+    type: application
+    platform: macOS
+    sources:
+      # uup-converter/ and drivers/ must stay folder references (type: folder)
+      # so their directory structure survives into Contents/Resources —
+      # BundledResources looks them up by relative path.
+      - path: Sources
+        excludes:
+          - "Resources/uup-converter"
+          - "Resources/uup-converter/**"
+          - "Resources/drivers"
+          - "Resources/drivers/**"
+          - "Resources/wimlib-imagex"
+          - "Resources/mkntfs"
+      - path: Sources/Resources/uup-converter
+        type: folder
+        optional: true
+      - path: Sources/Resources/drivers
+        type: folder
+        optional: true
+      # Extensionless Mach-O executables: xcodegen cannot infer a phase for
+      # these, so pin them to the resources (copy) phase explicitly.
+      - path: Sources/Resources/wimlib-imagex
+        buildPhase: resources
+        optional: true
+      - path: Sources/Resources/mkntfs
+        buildPhase: resources
+        optional: true
+      # The privileged install script, run as root via one admin prompt.
+      - path: Sources/Resources/wm-install.sh
+        buildPhase: resources
+      # The boot-object registration script (the stub hijack), same mechanism.
+      - path: Sources/Resources/wm-register-boot.sh
+        buildPhase: resources
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.windowsm.app
+        PRODUCT_NAME: WindowsM
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Config/App-Info.plist
+        CODE_SIGN_ENTITLEMENTS: Config/WindowsM.entitlements
+    dependencies:
+      - target: PrivilegedHelper
+        embed: false
+    postBuildScripts:
+      # SMJobBless requires the helper at Contents/Library/LaunchServices/<label>.
+      # This runs before the final codesign of the app, so the copy is sealed.
+      - name: Embed Privileged Helper
+        script: |
+          set -e
+          DEST="${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchServices"
+          mkdir -p "${DEST}"
+          cp -f "${BUILT_PRODUCTS_DIR}/com.windowsm.helper" "${DEST}/com.windowsm.helper"
+        outputFiles:
+          - $(BUILT_PRODUCTS_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchServices/com.windowsm.helper
+
+  PrivilegedHelper:
+    type: tool
+    platform: macOS
+    sources:
+      - path: PrivilegedHelper
+        excludes:
+          - "*.plist"
+      - path: Shared
+    settings:
+      base:
+        PRODUCT_NAME: com.windowsm.helper
+        PRODUCT_BUNDLE_IDENTIFIER: com.windowsm.helper
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+        # SMJobBless helpers are bare executables: their Info.plist and launchd
+        # plist live in __TEXT sections of the binary itself.
+        OTHER_LDFLAGS:
+          - -sectcreate
+          - __TEXT
+          - __info_plist
+          - $(SRCROOT)/PrivilegedHelper/Helper-Info.plist
+          - -sectcreate
+          - __TEXT
+          - __launchd_plist
+          - $(SRCROOT)/PrivilegedHelper/Helper-Launchd.plist

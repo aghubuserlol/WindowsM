@@ -1,0 +1,24 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# XcodeGen output is reproducible from project.yml, but we keep the project
+# checked in so the repo opens in Xcode without tooling. Ignore only user state.
+
+# Dependency build trees produced by scripts/
+.build-deps/
+
+# Bundled binaries are built locally, not committed
+Sources/Resources/m1n1.bin
+Sources/Resources/edk2-apple.fd
+Sources/Resources/wimlib-imagex
+Sources/Resources/mkntfs
+Sources/Resources/uup-converter/
+
+# macOS
+.DS_Store
+__pycache__/

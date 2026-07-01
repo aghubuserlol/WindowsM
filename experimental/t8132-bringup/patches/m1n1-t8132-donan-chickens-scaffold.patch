@@ -1,0 +1,143 @@
+diff --git a/Makefile b/Makefile
+index ac6b84a..6cacbd1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -120,6 +120,7 @@ OBJECTS := \
+ 	chickens_avalanche.o \
+ 	chickens_blizzard.o \
+ 	chickens_cyclone_typhoon.o \
++	chickens_donan.o \
+ 	chickens_everest.o \
+ 	chickens_firestorm.o \
+ 	chickens_hurricane_zephyr.o \
+diff --git a/src/chickens.c b/src/chickens.c
+index dbd89cc..12f30cb 100644
+--- a/src/chickens.c
++++ b/src/chickens.c
+@@ -32,6 +32,8 @@ void init_t6030_sawtooth(int rev);
+ void init_t6030_everest(int rev);
+ void init_t6031_sawtooth(int rev);
+ void init_t6031_everest(int rev);
++void init_t8132_donan_ecore(int rev);
++void init_t8132_donan_pcore(int rev);
+ 
+ struct midr_part_info {
+     int part;
+@@ -151,8 +153,8 @@ const struct midr_part_info midr_parts[] = {
+     {MIDR_PART_T6031_SAWTOOTH, "M3 Max Sawtooth", init_t6031_sawtooth, &features_m3},
+     {MIDR_PART_T8122_EVEREST, "M3 Everest", init_t8122_everest, &features_m3},
+     {MIDR_PART_T8122_SAWTOOTH, "M3 Sawtooth", init_t8122_sawtooth, &features_m3},
+-    {MIDR_PART_T8132_DONAN_ECORE, "M4 Donan (E core)", NULL, &features_m4},
+-    {MIDR_PART_T8132_DONAN_PCORE, "M4 Donan (P core)", NULL, &features_m4},
++    {MIDR_PART_T8132_DONAN_ECORE, "M4 Donan (E core)", init_t8132_donan_ecore, &features_m4},
++    {MIDR_PART_T8132_DONAN_PCORE, "M4 Donan (P core)", init_t8132_donan_pcore, &features_m4},
+     {MIDR_PART_T8140_TAHITI_ECORE, "A18 Pro Tahiti (E core)", NULL, &features_m4},
+     {MIDR_PART_T8140_TAHITI_PCORE, "A18 Pro Tahiti (P core)", NULL, &features_m4},
+ };
+diff --git a/src/chickens_donan.c b/src/chickens_donan.c
+new file mode 100644
+index 0000000..1a4bca9
+--- /dev/null
++++ b/src/chickens_donan.c
+@@ -0,0 +1,101 @@
++/* SPDX-License-Identifier: MIT */
++/*
++ * Apple T8132 "M4" Donan core init (chicken bits) — EXPERIMENTAL SCAFFOLD
++ *
++ * Contributed by the WindowsM project. Upstream m1n1 currently dispatches the
++ * Donan E/P cores with init == NULL and a placeholder features_m4 (see
++ * chickens.c / "XXX figure out what features are actually available on M4").
++ * This file wires those dispatch entries to real functions and provides the
++ * exact place where *measured* chicken bits go.
++ *
++ * ───────────────────────────────────────────────────────────────────────────
++ * WHY THIS IS EMPTY BY DEFAULT (and why that is correct, not lazy)
++ *
++ * Chicken bits are per-silicon HID/EHID register tunings. They CANNOT be
++ * derived by reading a datasheet or by copying a neighbouring SoC: within the
++ * M3 family alone, t8122 / t6030 / t6031 each program DIFFERENT EHID9 / HID5 /
++ * HID18 values (see chickens_sawtooth.c, chickens_everest.c). Guessing them
++ * risks hanging cores. The only correct source is the silicon itself.
++ *
++ * They are obtained by MEASUREMENT: boot macOS as a guest under m1n1's
++ * hypervisor (which traps HID/EHID via HACR.TRAP_HID / TRAP_EHID) and record
++ * every `msr SYS_IMP_APL_*HID*` the real firmware performs during core
++ * bring-up. The WindowsM tree ships that harness and a code generator:
++ *
++ *     experimental/t8132-bringup/chickens-trace/trace-donan-chickens.py
++ *     experimental/t8132-bringup/chickens-trace/derive-chickens.py
++ *
++ * derive-chickens.py rewrites the two MEASURED regions below from a capture.
++ * Until a capture from real M4 hardware exists, these functions intentionally
++ * do nothing beyond the architecturally-generic setup that init_cpu() already
++ * performs from features_m4 — i.e. exactly as safe as upstream's NULL, but
++ * wired, documented, and ready to be populated.
++ *
++ * The commented references marked "M3 REFERENCE" are the nearest-lineage
++ * values. They are present ONLY as a starting hypothesis for whoever runs the
++ * trace — they are NOT assumed equal to M4's and MUST NOT be uncommented
++ * without a trace confirming each one.
++ * ───────────────────────────────────────────────────────────────────────────
++ * EVIDENCE (see experimental/t8132-bringup/CHICKEN-BIT-ARCHAEOLOGY.md):
++ *
++ *  - The Donan cores are CONFIRMED to be the M3 Everest/Sawtooth
++ *    microarchitecture: the M4 ADT reports compatible = "apple,everest" /
++ *    "apple,sawtooth" (same as M3; newer revision, MIDR part 0x53/0x52 vs
++ *    M3's 0x43/0x42). So chickens_everest.c / chickens_sawtooth.c are the
++ *    *evidence-based* baseline for M4 — not a blind guess.
++ *  - Static RE of every M4 boot binary on disk (XNU, iBoot, SPTM, TXM) finds
++ *    ZERO classic S3_0_C15 HID/EHID writes (vs 102 in the M1 kernel, 10 in
++ *    M3). The classic chicken-bit pile has been engineered down to ~nothing,
++ *    consistent with upstream's near-empty features_m4. M4 likely needs very
++ *    few classic chicken bits; the real gap is SoC-level (SPTM, sleep mode).
++ * ───────────────────────────────────────────────────────────────────────────
++ */
++
++#include "cpu_regs.h"
++#include "uart.h"
++#include "utils.h"
++
++/* E-cores (ADT compatible "apple,sawtooth"). EHID* register space. */
++void init_t8132_donan_ecore(int rev)
++{
++    UNUSED(rev);
++
++    /* >>> MEASURED-ECORE-BEGIN (populated by derive-chickens.py) */
++    /* (empty: no verified M4 E-core chicken bits yet) */
++    /* <<< MEASURED-ECORE-END */
++
++    /*
++     * M3 REFERENCE (chickens_sawtooth.c, t6031) — verify each via trace
++     * before trusting on M4. Do NOT uncomment blindly:
++     *
++     *   reg_set(SYS_IMP_APL_EHID0, EHID0_BLI_UNK32);
++     *   reg_mask(SYS_IMP_APL_EHID9, EHID9_DEV_2_THROTTLE_LIMIT_MASK,
++     *            EHID9_DEV_2_THROTTLE_LIMIT(62));
++     *   reg_set(SYS_IMP_APL_EHID9, EHID9_DEV_2_THROTTLE_ENABLE);
++     *   reg_set(SYS_IMP_APL_EHID18, EHID18_BLZ_UNK34);
++     *   reg_mask(SYS_IMP_APL_HID5, HID5_BLZ_UNK_19_18_MASK, HID5_BLZ_UNK19);
++     */
++}
++
++/* P-cores (ADT compatible "apple,everest"). HID* register space. */
++void init_t8132_donan_pcore(int rev)
++{
++    UNUSED(rev);
++
++    /* >>> MEASURED-PCORE-BEGIN (populated by derive-chickens.py) */
++    /* (empty: no verified M4 P-core chicken bits yet) */
++    /* <<< MEASURED-PCORE-END */
++
++    /*
++     * M3 REFERENCE (chickens_everest.c, t6031 via init_common_everest) —
++     * verify each via trace before trusting on M4. Do NOT uncomment blindly:
++     *
++     *   reg_set(SYS_IMP_APL_HID12, BIT(46));
++     *   reg_set(SYS_IMP_APL_HID3, HID3_DEV_PCIE_THROTTLE_ENABLE);
++     *   reg_set(SYS_IMP_APL_HID9, BIT(17));
++     *   reg_set(SYS_IMP_APL_HID16, BIT(54));
++     *   reg_set(SYS_IMP_APL_HID18, HID18_GEXIT_EL_SPECULATION_DISABLE |
++     *                              HID18_GENTER_SPECULATION_DISABLE);
++     *   reg_set(SYS_IMP_APL_HID4, HID4_ENABLE_LFSR_STALL_LOAD_PIPE2_ISSUE);
++     */
++}

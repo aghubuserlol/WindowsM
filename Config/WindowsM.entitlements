@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Intentionally NOT sandboxed: the app drives diskutil/hdiutil, talks to a
+	  privileged XPC helper over a Mach service, and reads arbitrary ISO paths.
+	  App Sandbox is incompatible with SMJobBless privileged helpers.
+	  Hardened Runtime is enabled in build settings for notarization.
+	-->
+</dict>
+</plist>

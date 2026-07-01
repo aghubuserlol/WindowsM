@@ -1,0 +1,19 @@
+# =====================================================================
+# SYNTHETIC SAMPLE — NOT REAL M4 SILICON DATA. DO NOT SHIP AS CHICKEN BITS.
+# =====================================================================
+# This file exists ONLY to demonstrate the capture format and to let
+# derive-chickens.py be tested without an M4 + a second proxy host.
+# The register/value pairs below are illustrative placeholders chosen to
+# exercise the parser (both EHID and HID, dedup, last-write-wins). They are
+# NOT what Apple's firmware writes. A real capture comes from
+# trace-donan-chickens.py against actual hardware.
+#
+# Format: <ecore|pcore> <SYS_IMP_APL_*HIDnn> <hexval>
+# ---------------------------------------------------------------------
+ecore SYS_IMP_APL_EHID0  0x0000000080000000
+ecore SYS_IMP_APL_EHID9  0x0000000000000040
+ecore SYS_IMP_APL_EHID10 0x0000800000000000
+pcore SYS_IMP_APL_HID3   0x0000000000000810
+pcore SYS_IMP_APL_HID9   0x0000000000020000
+pcore SYS_IMP_APL_HID16  0x0040000000000000
+pcore SYS_IMP_APL_HID3   0x0000000000000810

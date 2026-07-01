@@ -1,0 +1,661 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		093E21306D63205C9E7BA535 /* InstallStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0EEC37A032C302A966E6E9 /* InstallStage.swift */; };
+		10F28F2078E1DF718C366D0A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EEA1805A16D7F12E3F14B /* WelcomeView.swift */; };
+		11AF4794379D3B9B8362FEF4 /* BundledResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EC7EE47B735D62EED1089 /* BundledResources.swift */; };
+		1441962E2955545778084438 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5358C9C9DE8A7EC29EB7D /* HelperProtocol.swift */; };
+		1B1ADB4042A0E6A2FE48162D /* BootchainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339659855FEE3C019B2CB46E /* BootchainManager.swift */; };
+		257E9ED2D68B4CD9F28335B3 /* DiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F33AEB57C542DFC9E46CEE /* DiskManager.swift */; };
+		3A925678D1C5B4CD9FCB27EC /* WindowsMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED81A49B4E63EA8822F7604 /* WindowsMError.swift */; };
+		3CC41E5291AD6CD8E8ACFFA8 /* UUPDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DF0B8150D526C04CD58B15 /* UUPDownloader.swift */; };
+		3DCF6B575B0925412578AD29 /* wm-register-boot.sh in Resources */ = {isa = PBXBuildFile; fileRef = CC18675DEAE10924E35E3BF0 /* wm-register-boot.sh */; };
+		40E168B562193B02410216BF /* edk2-apple.fd in Resources */ = {isa = PBXBuildFile; fileRef = A0511BBC88B73FE2E49B12D7 /* edk2-apple.fd */; };
+		55172417ADDE612F1E5D0F87 /* HelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1C3AF0AE0536555B3E79F /* HelperClient.swift */; };
+		589942882465E5ED75F49961 /* WizardStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19068EBE1F3FDE0AAA9F2D /* WizardStep.swift */; };
+		58A1C8EF401E2DEAB1F5B088 /* ConnectionVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14110D5ECEC2D2676A4BE391 /* ConnectionVerifier.swift */; };
+		593F10423649D4ED63D03EEF /* InstallationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7BEA1EFAE27BD1AFBC8D0A /* InstallationView.swift */; };
+		5D724AFE72F71C203786736A /* UUPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE7E227BF58248B96750E6A /* UUPModels.swift */; };
+		668660C3ABF3DE2683153061 /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1864C3F89562FE0C57D97B /* DiskInfo.swift */; };
+		6BB20AC876382A2EC4D97643 /* uup-converter in Resources */ = {isa = PBXBuildFile; fileRef = FD6C7F78C90411FED66D826D /* uup-converter */; };
+		6D70F422B1DAFCB585A59A72 /* DiskSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECAF5CA404483B215509EC1 /* DiskSelectionView.swift */; };
+		745D123E2D9E60279966EBBD /* WizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B58B818482C9627E37382 /* WizardView.swift */; };
+		78D37D204F9A297DB8E17C5A /* m1n1.bin in Resources */ = {isa = PBXBuildFile; fileRef = AAE42EC1C2ED98DAB617EDE9 /* m1n1.bin */; };
+		86D168543F5A8A3B21385063 /* ISOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515CBF4191F03E46E0C36769 /* ISOManager.swift */; };
+		8A2717C0376CFE10D511EE06 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3682CF29FB597A4E3FBF169 /* AppState.swift */; };
+		910B5AF9F342AF74F4E4A3A1 /* StubBootRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BE6E03D16EEAE9F6247339 /* StubBootRegistrar.swift */; };
+		9346A650D115A99A9D693C96 /* PrivilegedInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9FFE226409EC43C48F1FFC /* PrivilegedInstaller.swift */; };
+		979FDB51D94BD14F9CEBCAA3 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A5358C9C9DE8A7EC29EB7D /* HelperProtocol.swift */; };
+		C05A7CF3AF1729751F6D9BBB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6919431A2997505130E2720E /* main.swift */; };
+		C17E813A1A2AB300131475DE /* RequirementsChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4183D23975FAAA979A055950 /* RequirementsChecker.swift */; };
+		C30683C1BE7342DEAD4BD6E3 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1796A9166A6E8E472810167 /* DownloadView.swift */; };
+		C4510510B3F97944B92A0B21 /* HelperTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E24CF74BD498E11B42BC366 /* HelperTool.swift */; };
+		C65EE6609C3F95D25A33ECDD /* wimlib-imagex in Resources */ = {isa = PBXBuildFile; fileRef = E0F837F328ED0527FEDC26D3 /* wimlib-imagex */; };
+		C70988ECE6076651A373206D /* drivers in Resources */ = {isa = PBXBuildFile; fileRef = 7A3E9D26FE8A85064E144BDC /* drivers */; };
+		C90448F5E577681F2AB291DC /* RESOURCES.md in Resources */ = {isa = PBXBuildFile; fileRef = 8C315D1FBF58048631684A2C /* RESOURCES.md */; };
+		C9283C99E5EFD6F577750B15 /* BootSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A73F1AB7D77CD718448519F /* BootSetupView.swift */; };
+		CA7E80CAC049B16C2F43838E /* DependencyChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF433E6F8F127DD09E42C8F /* DependencyChecker.swift */; };
+		CB69EF655505AA169D252C78 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA135FC03B3567BC1AD49A68 /* Shell.swift */; };
+		D2216BDEB25DE67E9DB36992 /* wm-install.sh in Resources */ = {isa = PBXBuildFile; fileRef = 798A16281DD5243F3CDFE6A7 /* wm-install.sh */; };
+		DD8207B44433BCA979E53595 /* mkntfs in Resources */ = {isa = PBXBuildFile; fileRef = 4668CD734948CB3E7D94374D /* mkntfs */; };
+		E21FC1A2AE4F1810F614B5B3 /* ISOSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D6BBEB714FFE777EC2078 /* ISOSelectionView.swift */; };
+		F2E73D5580AC52FCB998B281 /* WindowsMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E0FB52EFC194E9FCE14B /* WindowsMApp.swift */; };
+		F7286A10B2DB9E6E91B73CB3 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3EF6BF1E160072843C2850 /* CompletionView.swift */; };
+		FCC9A0A46E41B819B31BB8C8 /* ChipSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0145595B8551ED714AFEBD /* ChipSupport.swift */; };
+		FE58FA4E84C5059D0A9A1CFA /* WindowsInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA9CCB64CA560E95929E432 /* WindowsInstaller.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B32622F7F0220683966C040E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEBFC8E01E2D99D7360311A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77217144211A2CABB99F16F4;
+			remoteInfo = PrivilegedHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B0EEC37A032C302A966E6E9 /* InstallStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallStage.swift; sourceTree = "<group>"; };
+		14110D5ECEC2D2676A4BE391 /* ConnectionVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionVerifier.swift; sourceTree = "<group>"; };
+		1A73F1AB7D77CD718448519F /* BootSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootSetupView.swift; sourceTree = "<group>"; };
+		277EC7EE47B735D62EED1089 /* BundledResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundledResources.swift; sourceTree = "<group>"; };
+		3212E0FB52EFC194E9FCE14B /* WindowsMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsMApp.swift; sourceTree = "<group>"; };
+		339659855FEE3C019B2CB46E /* BootchainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootchainManager.swift; sourceTree = "<group>"; };
+		3ECAF5CA404483B215509EC1 /* DiskSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskSelectionView.swift; sourceTree = "<group>"; };
+		4183D23975FAAA979A055950 /* RequirementsChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementsChecker.swift; sourceTree = "<group>"; };
+		4668CD734948CB3E7D94374D /* mkntfs */ = {isa = PBXFileReference; path = mkntfs; sourceTree = "<group>"; };
+		4ED81A49B4E63EA8822F7604 /* WindowsMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsMError.swift; sourceTree = "<group>"; };
+		515CBF4191F03E46E0C36769 /* ISOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOManager.swift; sourceTree = "<group>"; };
+		6919431A2997505130E2720E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		6A7B58B818482C9627E37382 /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
+		6A7BEA1EFAE27BD1AFBC8D0A /* InstallationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallationView.swift; sourceTree = "<group>"; };
+		6EF433E6F8F127DD09E42C8F /* DependencyChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyChecker.swift; sourceTree = "<group>"; };
+		6FE7E227BF58248B96750E6A /* UUPModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPModels.swift; sourceTree = "<group>"; };
+		798A16281DD5243F3CDFE6A7 /* wm-install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "wm-install.sh"; sourceTree = "<group>"; };
+		7A3E9D26FE8A85064E144BDC /* drivers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = drivers; path = Sources/Resources/drivers; sourceTree = SOURCE_ROOT; };
+		7D0145595B8551ED714AFEBD /* ChipSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipSupport.swift; sourceTree = "<group>"; };
+		7E24CF74BD498E11B42BC366 /* HelperTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTool.swift; sourceTree = "<group>"; };
+		84E1C3AF0AE0536555B3E79F /* HelperClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperClient.swift; sourceTree = "<group>"; };
+		89BE6E03D16EEAE9F6247339 /* StubBootRegistrar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBootRegistrar.swift; sourceTree = "<group>"; };
+		8C315D1FBF58048631684A2C /* RESOURCES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RESOURCES.md; sourceTree = "<group>"; };
+		8E8EEA1805A16D7F12E3F14B /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A0511BBC88B73FE2E49B12D7 /* edk2-apple.fd */ = {isa = PBXFileReference; path = "edk2-apple.fd"; sourceTree = "<group>"; };
+		AAE42EC1C2ED98DAB617EDE9 /* m1n1.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = m1n1.bin; sourceTree = "<group>"; };
+		B11B58AAB20BCEAD648F8654 /* WindowsM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowsM.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3DF0B8150D526C04CD58B15 /* UUPDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUPDownloader.swift; sourceTree = "<group>"; };
+		BAA9CCB64CA560E95929E432 /* WindowsInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsInstaller.swift; sourceTree = "<group>"; };
+		BC5D6BBEB714FFE777EC2078 /* ISOSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOSelectionView.swift; sourceTree = "<group>"; };
+		BE19068EBE1F3FDE0AAA9F2D /* WizardStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardStep.swift; sourceTree = "<group>"; };
+		BE40095242204FD6A21DF8C3 /* PrivilegedHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = PrivilegedHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC18675DEAE10924E35E3BF0 /* wm-register-boot.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "wm-register-boot.sh"; sourceTree = "<group>"; };
+		CE1864C3F89562FE0C57D97B /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
+		D1796A9166A6E8E472810167 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		D2F33AEB57C542DFC9E46CEE /* DiskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskManager.swift; sourceTree = "<group>"; };
+		D3682CF29FB597A4E3FBF169 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D8A5358C9C9DE8A7EC29EB7D /* HelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
+		DA135FC03B3567BC1AD49A68 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		DF3EF6BF1E160072843C2850 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
+		E0F837F328ED0527FEDC26D3 /* wimlib-imagex */ = {isa = PBXFileReference; path = "wimlib-imagex"; sourceTree = "<group>"; };
+		EB9FFE226409EC43C48F1FFC /* PrivilegedInstaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivilegedInstaller.swift; sourceTree = "<group>"; };
+		FD6C7F78C90411FED66D826D /* uup-converter */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "uup-converter"; path = "Sources/Resources/uup-converter"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0DA6B75AD30516C3DADD05E6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				87A5ED417B31D1ECC6E0FA14 /* App */,
+				6FC71BF0DCBF02A707A87B5A /* Core */,
+				79C698BA3662C64AB9A28C3D /* Models */,
+				2A78556B0706E3FC1D48668F /* Resources */,
+				20336E67EB3EC5A1A2B1D9F7 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		20336E67EB3EC5A1A2B1D9F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A73F1AB7D77CD718448519F /* BootSetupView.swift */,
+				DF3EF6BF1E160072843C2850 /* CompletionView.swift */,
+				3ECAF5CA404483B215509EC1 /* DiskSelectionView.swift */,
+				D1796A9166A6E8E472810167 /* DownloadView.swift */,
+				6A7BEA1EFAE27BD1AFBC8D0A /* InstallationView.swift */,
+				BC5D6BBEB714FFE777EC2078 /* ISOSelectionView.swift */,
+				8E8EEA1805A16D7F12E3F14B /* WelcomeView.swift */,
+				6A7B58B818482C9627E37382 /* WizardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2947EA9CA008D16DF5EF4FB6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D8A5358C9C9DE8A7EC29EB7D /* HelperProtocol.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2A78556B0706E3FC1D48668F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A3E9D26FE8A85064E144BDC /* drivers */,
+				A0511BBC88B73FE2E49B12D7 /* edk2-apple.fd */,
+				AAE42EC1C2ED98DAB617EDE9 /* m1n1.bin */,
+				4668CD734948CB3E7D94374D /* mkntfs */,
+				8C315D1FBF58048631684A2C /* RESOURCES.md */,
+				FD6C7F78C90411FED66D826D /* uup-converter */,
+				E0F837F328ED0527FEDC26D3 /* wimlib-imagex */,
+				798A16281DD5243F3CDFE6A7 /* wm-install.sh */,
+				CC18675DEAE10924E35E3BF0 /* wm-register-boot.sh */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6FC71BF0DCBF02A707A87B5A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				339659855FEE3C019B2CB46E /* BootchainManager.swift */,
+				277EC7EE47B735D62EED1089 /* BundledResources.swift */,
+				7D0145595B8551ED714AFEBD /* ChipSupport.swift */,
+				6EF433E6F8F127DD09E42C8F /* DependencyChecker.swift */,
+				D2F33AEB57C542DFC9E46CEE /* DiskManager.swift */,
+				84E1C3AF0AE0536555B3E79F /* HelperClient.swift */,
+				515CBF4191F03E46E0C36769 /* ISOManager.swift */,
+				EB9FFE226409EC43C48F1FFC /* PrivilegedInstaller.swift */,
+				4183D23975FAAA979A055950 /* RequirementsChecker.swift */,
+				DA135FC03B3567BC1AD49A68 /* Shell.swift */,
+				89BE6E03D16EEAE9F6247339 /* StubBootRegistrar.swift */,
+				B3DF0B8150D526C04CD58B15 /* UUPDownloader.swift */,
+				BAA9CCB64CA560E95929E432 /* WindowsInstaller.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		79C698BA3662C64AB9A28C3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE1864C3F89562FE0C57D97B /* DiskInfo.swift */,
+				0B0EEC37A032C302A966E6E9 /* InstallStage.swift */,
+				6FE7E227BF58248B96750E6A /* UUPModels.swift */,
+				4ED81A49B4E63EA8822F7604 /* WindowsMError.swift */,
+				BE19068EBE1F3FDE0AAA9F2D /* WizardStep.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		87A5ED417B31D1ECC6E0FA14 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D3682CF29FB597A4E3FBF169 /* AppState.swift */,
+				3212E0FB52EFC194E9FCE14B /* WindowsMApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		93071E7A8D101509C8099456 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE40095242204FD6A21DF8C3 /* PrivilegedHelper */,
+				B11B58AAB20BCEAD648F8654 /* WindowsM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1064491C6CA9EAAE5F6D00E = {
+			isa = PBXGroup;
+			children = (
+				FC97471CFC5AE111847B03D9 /* PrivilegedHelper */,
+				2947EA9CA008D16DF5EF4FB6 /* Shared */,
+				0DA6B75AD30516C3DADD05E6 /* Sources */,
+				93071E7A8D101509C8099456 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC97471CFC5AE111847B03D9 /* PrivilegedHelper */ = {
+			isa = PBXGroup;
+			children = (
+				14110D5ECEC2D2676A4BE391 /* ConnectionVerifier.swift */,
+				7E24CF74BD498E11B42BC366 /* HelperTool.swift */,
+				6919431A2997505130E2720E /* main.swift */,
+			);
+			path = PrivilegedHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		77217144211A2CABB99F16F4 /* PrivilegedHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C790B793AC2C593D7B2A4A4E /* Build configuration list for PBXNativeTarget "PrivilegedHelper" */;
+			buildPhases = (
+				923598B929FABA674D3E3747 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PrivilegedHelper;
+			packageProductDependencies = (
+			);
+			productName = PrivilegedHelper;
+			productReference = BE40095242204FD6A21DF8C3 /* PrivilegedHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+		CA542D4E9696A32059CAF3C1 /* WindowsM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1079AD1FC4CE9511FE020A8 /* Build configuration list for PBXNativeTarget "WindowsM" */;
+			buildPhases = (
+				9F4532CE5C6F16726F4445A7 /* Sources */,
+				87404EF7F8326579FAB64722 /* Resources */,
+				F3D8A7AEEDCD80DAA6FC7190 /* Embed Privileged Helper */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B18A2813A070517A6FF8E22 /* PBXTargetDependency */,
+			);
+			name = WindowsM;
+			packageProductDependencies = (
+			);
+			productName = WindowsM;
+			productReference = B11B58AAB20BCEAD648F8654 /* WindowsM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FEBFC8E01E2D99D7360311A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					77217144211A2CABB99F16F4 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					CA542D4E9696A32059CAF3C1 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 6DAC3DC67FA785A16CF1E639 /* Build configuration list for PBXProject "WindowsM" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C1064491C6CA9EAAE5F6D00E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 93071E7A8D101509C8099456 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				77217144211A2CABB99F16F4 /* PrivilegedHelper */,
+				CA542D4E9696A32059CAF3C1 /* WindowsM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87404EF7F8326579FAB64722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90448F5E577681F2AB291DC /* RESOURCES.md in Resources */,
+				C70988ECE6076651A373206D /* drivers in Resources */,
+				40E168B562193B02410216BF /* edk2-apple.fd in Resources */,
+				78D37D204F9A297DB8E17C5A /* m1n1.bin in Resources */,
+				DD8207B44433BCA979E53595 /* mkntfs in Resources */,
+				6BB20AC876382A2EC4D97643 /* uup-converter in Resources */,
+				C65EE6609C3F95D25A33ECDD /* wimlib-imagex in Resources */,
+				D2216BDEB25DE67E9DB36992 /* wm-install.sh in Resources */,
+				3DCF6B575B0925412578AD29 /* wm-register-boot.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F3D8A7AEEDCD80DAA6FC7190 /* Embed Privileged Helper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Privileged Helper";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(CONTENTS_FOLDER_PATH)/Library/LaunchServices/com.windowsm.helper",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nDEST=\"${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Library/LaunchServices\"\nmkdir -p \"${DEST}\"\ncp -f \"${BUILT_PRODUCTS_DIR}/com.windowsm.helper\" \"${DEST}/com.windowsm.helper\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		923598B929FABA674D3E3747 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58A1C8EF401E2DEAB1F5B088 /* ConnectionVerifier.swift in Sources */,
+				1441962E2955545778084438 /* HelperProtocol.swift in Sources */,
+				C4510510B3F97944B92A0B21 /* HelperTool.swift in Sources */,
+				C05A7CF3AF1729751F6D9BBB /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9F4532CE5C6F16726F4445A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A2717C0376CFE10D511EE06 /* AppState.swift in Sources */,
+				C9283C99E5EFD6F577750B15 /* BootSetupView.swift in Sources */,
+				1B1ADB4042A0E6A2FE48162D /* BootchainManager.swift in Sources */,
+				11AF4794379D3B9B8362FEF4 /* BundledResources.swift in Sources */,
+				FCC9A0A46E41B819B31BB8C8 /* ChipSupport.swift in Sources */,
+				F7286A10B2DB9E6E91B73CB3 /* CompletionView.swift in Sources */,
+				CA7E80CAC049B16C2F43838E /* DependencyChecker.swift in Sources */,
+				668660C3ABF3DE2683153061 /* DiskInfo.swift in Sources */,
+				257E9ED2D68B4CD9F28335B3 /* DiskManager.swift in Sources */,
+				6D70F422B1DAFCB585A59A72 /* DiskSelectionView.swift in Sources */,
+				C30683C1BE7342DEAD4BD6E3 /* DownloadView.swift in Sources */,
+				55172417ADDE612F1E5D0F87 /* HelperClient.swift in Sources */,
+				979FDB51D94BD14F9CEBCAA3 /* HelperProtocol.swift in Sources */,
+				86D168543F5A8A3B21385063 /* ISOManager.swift in Sources */,
+				E21FC1A2AE4F1810F614B5B3 /* ISOSelectionView.swift in Sources */,
+				093E21306D63205C9E7BA535 /* InstallStage.swift in Sources */,
+				593F10423649D4ED63D03EEF /* InstallationView.swift in Sources */,
+				9346A650D115A99A9D693C96 /* PrivilegedInstaller.swift in Sources */,
+				C17E813A1A2AB300131475DE /* RequirementsChecker.swift in Sources */,
+				CB69EF655505AA169D252C78 /* Shell.swift in Sources */,
+				910B5AF9F342AF74F4E4A3A1 /* StubBootRegistrar.swift in Sources */,
+				3CC41E5291AD6CD8E8ACFFA8 /* UUPDownloader.swift in Sources */,
+				5D724AFE72F71C203786736A /* UUPModels.swift in Sources */,
+				10F28F2078E1DF718C366D0A /* WelcomeView.swift in Sources */,
+				FE58FA4E84C5059D0A9A1CFA /* WindowsInstaller.swift in Sources */,
+				F2E73D5580AC52FCB998B281 /* WindowsMApp.swift in Sources */,
+				3A925678D1C5B4CD9FCB27EC /* WindowsMError.swift in Sources */,
+				589942882465E5ED75F49961 /* WizardStep.swift in Sources */,
+				745D123E2D9E60279966EBBD /* WizardView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B18A2813A070517A6FF8E22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77217144211A2CABB99F16F4 /* PrivilegedHelper */;
+			targetProxy = B32622F7F0220683966C040E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		453A6DB1A65080E741D002E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		8524BE4944AF26547F4A5AF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"$(SRCROOT)/PrivilegedHelper/Helper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"$(SRCROOT)/PrivilegedHelper/Helper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.windowsm.helper;
+				PRODUCT_NAME = com.windowsm.helper;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AF1117D744F768C9E56D607A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/WindowsM.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.windowsm.app;
+				PRODUCT_NAME = WindowsM;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B1540618437535B786318D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-sectcreate",
+					__TEXT,
+					__info_plist,
+					"$(SRCROOT)/PrivilegedHelper/Helper-Info.plist",
+					"-sectcreate",
+					__TEXT,
+					__launchd_plist,
+					"$(SRCROOT)/PrivilegedHelper/Helper-Launchd.plist",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.windowsm.helper;
+				PRODUCT_NAME = com.windowsm.helper;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E14BB6C06A67CB9A6117F0B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F40912ACE5FDD57570B5CB72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/WindowsM.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.windowsm.app;
+				PRODUCT_NAME = WindowsM;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DAC3DC67FA785A16CF1E639 /* Build configuration list for PBXProject "WindowsM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E14BB6C06A67CB9A6117F0B0 /* Debug */,
+				453A6DB1A65080E741D002E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C790B793AC2C593D7B2A4A4E /* Build configuration list for PBXNativeTarget "PrivilegedHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8524BE4944AF26547F4A5AF3 /* Debug */,
+				B1540618437535B786318D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F1079AD1FC4CE9511FE020A8 /* Build configuration list for PBXNativeTarget "WindowsM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF1117D744F768C9E56D607A /* Debug */,
+				F40912ACE5FDD57570B5CB72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FEBFC8E01E2D99D7360311A3 /* Project object */;
+}
